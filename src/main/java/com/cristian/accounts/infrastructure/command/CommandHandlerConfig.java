@@ -1,11 +1,10 @@
 package com.cristian.accounts.infrastructure.command;
 
-import com.cristian.accounts.account.command.CreateAccountCommand;
+import com.cristian.accounts.domain.accounts.command.CreateAccountCommand;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.annotation.Configuration;
 
-import java.util.List;
 import java.util.Map;
 
 @Configuration

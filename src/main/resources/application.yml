@@ -10,9 +10,9 @@ spring:
     fallback-to-system-locale: false
     basename: messages.messages
 
-  logging:
-    file:
-      name: /resources/logs/.tx
+logging:
+  file:
+    name: logs.test.log
 
 management:
   endpoints:
