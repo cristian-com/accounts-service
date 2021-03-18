@@ -1,44 +1,27 @@
 package com.cristian.accounts.application.accounts.web.v1;
 
-import com.cristian.accounts.domain.accounts.command.CreateAccountCommand;
-import com.cristian.accounts.infrastructure.command.CommandGateway;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import com.cristian.accounts.application.accounts.service.AccountService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.constraints.NotEmpty;
-import java.io.Serializable;
+import javax.validation.Valid;
 
 @RestController
 @RequiredArgsConstructor
 public class AccountsController {
 
-  private final CommandGateway commandGateway;
+  private final AccountsApiResponse apiResponse;
+  private final AccountsApiRequests apiRequests;
+  private final AccountService accountService;
 
-  @PostMapping("/${pablito.clavo}/clavito")
-  public ResponseEntity<AccountsApiResponse.AccountCreatedResponse> create(
-          @Validated @RequestBody CreateAccount command, BindingResult result,
-          @Value("${local.server.port}") String port) {
-    System.out.println("Hello World");
-    System.out.println("One more my friend");
-    commandGateway.send(CreateAccountCommand.builder().build());
-    return ResponseEntity.ok(AccountsApiResponse.AccountCreatedResponse.of());
-  }
-
-  @Builder
-  @AllArgsConstructor
-  @NoArgsConstructor
-  static class CreateAccount implements Serializable {
-    public static int serialVersionUID = 2;
-
-    @NotEmpty private String name;
+  @PostMapping("/accounts")
+  public ResponseEntity<AccountsApiResponse.AccountDetailed> create(
+      @Valid @RequestBody AccountsApiRequests.CreateAccount request) {
+    var command = apiRequests.createAccountCommand(request);
+    var account = accountService.create(command);
+    return ResponseEntity.ok(apiResponse.accountDetailed(account));
   }
 }

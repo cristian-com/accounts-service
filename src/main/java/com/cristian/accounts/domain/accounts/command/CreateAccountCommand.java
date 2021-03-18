@@ -1,13 +1,16 @@
 package com.cristian.accounts.domain.accounts.command;
 
-import com.cristian.accounts.infrastructure.command.Command;
-import lombok.Builder;
-import org.springframework.beans.factory.annotation.Configurable;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Builder
-@Configurable
-public class CreateAccountCommand implements Command {
+import java.util.Map;
 
-  private static final String COMMAND_ID = "CreateAccount";
-  private final String name;
+@Setter
+@NoArgsConstructor
+public class CreateAccountCommand {
+  private String name;
+  private String email;
+  private String surname;
+  private String phone;
+  private Map<String, String> contactDetails;
 }

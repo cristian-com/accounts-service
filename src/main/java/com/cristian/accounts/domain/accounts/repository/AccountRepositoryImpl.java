@@ -11,7 +11,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class AccountRepositoryImpl implements AccountRepository {
 
-  //private final AccountDao accountDao;
+  // private final AccountDao accountDao;
 
   @Override
   public Optional<Account> find(String id) {
@@ -19,18 +19,13 @@ public class AccountRepositoryImpl implements AccountRepository {
   }
 
   @Override
-  public Optional<Account> create(Account ac) {
-    return Optional.empty();
-  }
-
-  @Override
-  public Account update(Account ac) {
+  public Account save(Account ac) {
     return null;
   }
 
   @Override
   public void delete(Account ac) {}
 
-  //@Repository
+  // @Repository
   public interface AccountDao extends JpaRepository<Account, String> {}
 }

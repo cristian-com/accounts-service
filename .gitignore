@@ -20,6 +20,7 @@ target/
 *.ipr
 *.ipr
 *.log
+*.gz
 
 
 ### NetBeans ###

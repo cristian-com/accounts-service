@@ -14,12 +14,12 @@ import static java.util.Objects.requireNonNull;
 @Builder(access = AccessLevel.PROTECTED)
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class Account {
-  private final String identity;
+  private String identity;
   @NotNull private EmailAddress email;
   @NotBlank private String name;
   private String surname;
   private PhoneNumber phone;
-  private final Set<ContactDetail> contactDetails;
+  private Set<ContactDetail> contactDetails;
 
   protected void validate() {
     requireNonNull(email);
