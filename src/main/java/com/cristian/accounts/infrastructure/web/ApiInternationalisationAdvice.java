@@ -39,8 +39,8 @@ public class ApiInternationalisationAdvice implements ResponseBodyAdvice<Object>
     }
 
     if (ApiResponse.class.isAssignableFrom(body.getClass())) {
-      ApiResponse<?> response = (ApiResponse<?>) body;
-      String translatedMessage =
+      var response = (ApiResponse<?>) body;
+      var translatedMessage =
           resourceBundleMessageSource.getMessage(
               response.getMessage(), response.getMessageParams(), LocaleContextHolder.getLocale());
       response.setMessage(translatedMessage);

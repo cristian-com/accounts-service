@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @Repository
 @RequiredArgsConstructor
@@ -14,7 +15,7 @@ public class AccountRepositoryImpl implements AccountRepository {
   // private final AccountDao accountDao;
 
   @Override
-  public Optional<Account> find(String id) {
+  public Optional<Account> find(UUID id) {
     return Optional.empty();
   }
 
@@ -24,7 +25,9 @@ public class AccountRepositoryImpl implements AccountRepository {
   }
 
   @Override
-  public void delete(Account ac) {}
+  public void delete(UUID id) {
+
+  }
 
   // @Repository
   public interface AccountDao extends JpaRepository<Account, String> {}

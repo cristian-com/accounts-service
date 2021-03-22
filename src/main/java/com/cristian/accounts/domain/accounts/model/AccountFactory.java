@@ -3,15 +3,23 @@ package com.cristian.accounts.domain.accounts.model;
 import com.cristian.accounts.domain.accounts.command.CreateAccountCommand;
 import com.cristian.accounts.infrastructure.validation.Factory;
 
-@Factory
-public class AccountFactory implements ModelFactory<Account> {
+import java.util.UUID;
 
-  public static Account newInstance(CreateAccountCommand command) {
-    return Account.builder().build();
+@Factory
+public class AccountFactory implements EntityFactory<Account, UUID> {
+
+  public Account newInstance(CreateAccountCommand command) {
+    return Account.builder()
+        .identity(generateIdentity())
+        .name(command.getName())
+        .surname(command.getSurname())
+        .email(EmailAddress.of(command.getEmail()))
+        .phone(PhoneNumber.of(command.getPhone()))
+        .build();
   }
 
   @Override
-  public void validate(Account model) {
-    model.validate();
+  public UUID generateIdentity() {
+    return UUID.randomUUID();
   }
 }

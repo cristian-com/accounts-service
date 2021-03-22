@@ -12,5 +12,5 @@ import java.util.UUID;
 public class Organization {
   private final UUID id;
   @NotEmpty private final String name;
-  @Singular private final Set<CustomField> customFields;
+  @Singular private final Set<CustomFieldDefinition> customFields;
 }

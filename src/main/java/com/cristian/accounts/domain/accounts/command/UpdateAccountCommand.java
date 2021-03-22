@@ -2,16 +2,16 @@ package com.cristian.accounts.domain.accounts.command;
 
 import lombok.*;
 
-import java.util.Map;
+import java.util.UUID;
 
 @Value
 @Builder
 @AllArgsConstructor(access = AccessLevel.PUBLIC)
 @EqualsAndHashCode(callSuper = true, onlyExplicitlyIncluded = true)
-public class CreateAccountCommand extends Command {
+public class UpdateAccountCommand extends Command {
+  UUID id;
   String name;
   String email;
   String surname;
   String phone;
-  Map<String, String> contactDetails;
 }

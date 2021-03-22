@@ -10,7 +10,11 @@ spring:
     fallback-to-system-locale: false
     basename: messages.messages
 
-logging:
+server:
+  servlet:
+    context-path: /accounts-service
+
+comment-logging:
   file:
     name: logs.test.log
 
